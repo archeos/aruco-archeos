@@ -1,0 +1,32 @@
+Source: aruco
+Section: graphics
+Priority: extra
+Maintainer: Romain Janvier <romain.janvier@hotmail.fr>
+Build-Depends: debhelper (>= 9.0.0), cmake, libopencv-dev (>=2.1) 
+Standards-Version: 3.9.4
+Homepage: http://www.uco.es/investiga/grupos/ava/node/26
+Vcs-Git: git://github.com/archeos/aruco-archeos.git
+Vcs-Browser: https://github.com/archeos/aruco-archeos.git
+
+Package: libaruco1.2
+Architecture: any
+#recommends: libogre-dev => see exemples
+Depends: ${shlibs:Depends}, ${misc:Depends}
+@recommends: ogre(?)
+Description: Augmented reallity library
+
+Package: libaruco-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+@recommends: ogre(?)
+Description: Augmented reallity library
+ dev package + static lib
+
+Package: libaruco-utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+@recommends: ogre(?)
+Description: Augmented reallity library
+ binaries built on top of libaruco
+
+#libaruco-doc ?
