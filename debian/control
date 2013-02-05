@@ -1,5 +1,5 @@
 Source: aruco
-Section: graphics
+Section: libdevel
 Priority: extra
 Maintainer: Romain Janvier <romain.janvier@hotmail.fr>
 Build-Depends: debhelper (>= 9.0.0), cmake, libopencv-dev (>=2.1) 
@@ -12,21 +12,19 @@ Package: libaruco1.2
 Architecture: any
 #recommends: libogre-dev => see exemples
 Depends: ${shlibs:Depends}, ${misc:Depends}
-@recommends: ogre(?)
-Description: Augmented reallity library
+Description: Augmented reality library
+ Shared lib
 
 Package: libaruco-dev
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-@recommends: ogre(?)
-Description: Augmented reallity library
- dev package + static lib
+Description: Augmented reality library
+ Dev package + static lib
 
 Package: libaruco-utils
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-@recommends: ogre(?)
-Description: Augmented reallity library
- binaries built on top of libaruco
+Description: Augmented reality library
+ Binaries built on top of libaruco
 
 #libaruco-doc ?

@@ -7,14 +7,11 @@ Copyright: the Ava group of the Univeristy of Cordoba
            Contact Rafael Muñoz Salinas  <rmsalinas@uco.es>
 License: BSD
 
-
-
-
 Files: debian/*
 Copyright: 2013 Romain Janvier <romain.janvier@hotmail.fr>
 License: GPL-2.0+
 
-Licence: BSD
+License: BSD
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
  met:
