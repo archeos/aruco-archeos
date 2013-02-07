@@ -1,0 +1,8 @@
+# Quilt
+.pc/
+
+# vim
+.*~
+
+# debug Build
+built/
