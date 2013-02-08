@@ -11,23 +11,34 @@ Vcs-Browser: https://github.com/archeos/aruco-archeos.git
 Package: libaruco-dev
 Section: libdevel
 Architecture: any
-Depends: freeglut3-dev, libopencv-dev (>=2.1), libaruco1.2 (= ${binary:Version}), ${misc:Depends}
+recommends: libogre-dev, freeglut3-dev
+Depends: libopencv-dev (>=2.1), libaruco1.2 (= ${binary:Version}), ${misc:Depends}
 Description: Augmented reality library
- Dev package + static lib
+ Aruco is a "minimal library for Augmented Reality applications based on
+ OpenCv". It supports AR markers, AR boards (multiple marker boards)
+ and integrates very well with Ogre 3D engine and OpenGL. This is the 
+ development package, it contains headers and static library. 
 
 Package: libaruco1.2
 Section: libs
 Architecture: any
-recommends: libogre-dev
+recommends: libogre, freeglut3
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Augmented reality library
- Shared lib
+ Aruco is a "minimal library for Augmented Reality applications based on 
+ OpenCv". It supports AR markers, AR boards (multiple marker boards) 
+ and integrates very well with Ogre 3D engine and OpenGL. This package 
+ contains the shared library
 
 Package: libaruco-utils
 Section: utils
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Augmented reality library
- Binaries built on top of libaruco
+ Aruco is a "minimal library for Augmented Reality applications based on 
+ OpenCv". It supports AR markers, AR boards (multiple marker boards) and 
+ integrates very well with Ogre 3D engine and OpenGL. This package
+ contains various convenient tools to help you to start with Aruco 
+ (generate markers, boards and test them). 
 
 #libaruco-doc or compile doc for libarucoSO ?
