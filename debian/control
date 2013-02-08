@@ -11,14 +11,14 @@ Vcs-Browser: https://github.com/archeos/aruco-archeos.git
 Package: libaruco-dev
 Section: libdevel
 Architecture: any
-Depends: libaruco1.2 (= ${binary:Version}), ${misc:Depends}
+Depends: freeglut3-dev, libopencv-dev (>=2.1), libaruco1.2 (= ${binary:Version}), ${misc:Depends}
 Description: Augmented reality library
  Dev package + static lib
 
 Package: libaruco1.2
 Section: libs
 Architecture: any
-#recommends: libogre-dev => see exemples
+recommends: libogre-dev
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Augmented reality library
  Shared lib
@@ -30,4 +30,4 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Augmented reality library
  Binaries built on top of libaruco
 
-#libaruco-doc ?
+#libaruco-doc or compile doc for libarucoSO ?
