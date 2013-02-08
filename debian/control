@@ -2,7 +2,7 @@ Source: aruco
 Section: libs
 Priority: extra
 Maintainer: Romain Janvier <romain.janvier@hotmail.fr>
-Build-Depends: debhelper (>= 9.0.0), cmake, freeglut3-dev, libopencv-core-dev (>=2.1) 
+Build-Depends: debhelper (>= 9.0.0), cmake, freeglut3-dev, libopencv-dev (>=2.1), doxygen 
 Standards-Version: 3.9.4
 Homepage: http://www.uco.es/investiga/grupos/ava/node/26
 Vcs-Git: git://github.com/archeos/aruco-archeos.git
@@ -39,6 +39,15 @@ Description: Augmented reality library
  OpenCv". It supports AR markers, AR boards (multiple marker boards) and 
  integrates very well with Ogre 3D engine and OpenGL. This package
  contains various convenient tools to help you to start with Aruco 
- (generate markers, boards and test them). 
+ (generate markers, boards and test them).
 
-#libaruco-doc or compile doc for libarucoSO ?
+Package: libaruco-doc
+Section: doc
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Augmented reality library
+ Aruco is a "minimal library for Augmented Reality applications based on 
+ OpenCv". It supports AR markers, AR boards (multiple marker boards) and 
+ integrates very well with Ogre 3D engine and OpenGL. This is the doc 
+ package for Aruco.
+
