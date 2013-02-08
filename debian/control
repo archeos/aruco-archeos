@@ -1,5 +1,5 @@
 Source: aruco
-Section: libdevel
+Section: libs
 Priority: extra
 Maintainer: Romain Janvier <romain.janvier@hotmail.fr>
 Build-Depends: debhelper (>= 9.0.0), cmake, freeglut3-dev, libopencv-dev (>=2.1) 
@@ -8,20 +8,23 @@ Homepage: http://www.uco.es/investiga/grupos/ava/node/26
 Vcs-Git: git://github.com/archeos/aruco-archeos.git
 Vcs-Browser: https://github.com/archeos/aruco-archeos.git
 
+Package: libaruco-dev
+Section: libdevel
+Architecture: any
+Depends: libaruco1.2 (= ${binary:Version}), ${misc:Depends}
+Description: Augmented reality library
+ Dev package + static lib
+
 Package: libaruco1.2
+Section: libs
 Architecture: any
 #recommends: libogre-dev => see exemples
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Augmented reality library
  Shared lib
 
-Package: libaruco-dev
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Augmented reality library
- Dev package + static lib
-
 Package: libaruco-utils
+Section: utils
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Augmented reality library

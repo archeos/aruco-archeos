@@ -1,15 +1,17 @@
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -8,7 +8,7 @@ SET(srcs ${srcs})
+@@ -7,8 +7,8 @@ SET(hdrs ${hdrs})
+ SET(srcs ${srcs})
  
  
- ADD_LIBRARY(${PROJECT_NAME} ${srcs} ${hdrs})
+-ADD_LIBRARY(${PROJECT_NAME} ${srcs} ${hdrs})
 -INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR} )
++ADD_LIBRARY(${PROJECT_NAME} SHARED ${srcs} ${hdrs})
 +INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
  MESSAGE(STATUS "OpenCV_LIB_DIR=${OpenCV_LIB_DIR}")
  SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES 				# create *nix style library versions + symbolic links
  	DEFINE_SYMBOL DSO_EXPORTS
-@@ -18,6 +18,12 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME} PR
+@@ -18,14 +18,23 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME} PR
  	OUTPUT_NAME "${PROJECT_NAME}${PROJECT_DLLVERSION}" 	# avoid conflicts between library and binary target names
  )
  
@@ -22,14 +24,53 @@
  TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${REQUIRED_LIBRARIES})
  
  INSTALL(TARGETS ${PROJECT_NAME}
-@@ -25,6 +31,10 @@ INSTALL(TARGETS ${PROJECT_NAME}
- 	LIBRARY DESTINATION lib PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE COMPONENT main
- 	ARCHIVE DESTINATION lib COMPONENT main)			# Install the dll.a file in lib directory
- 
-+INSTALL(TARGETS ${PROJECT_NAME}-static
-+	LIBRARY DESTINATION lib PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE COMPONENT main
-+	ARCHIVE DESTINATION lib COMPONENT main)	
+-	RUNTIME DESTINATION bin COMPONENT main			# Install the dll file in bin directory
+-	LIBRARY DESTINATION lib PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE COMPONENT main
+-	ARCHIVE DESTINATION lib COMPONENT main)			# Install the dll.a file in lib directory
++	RUNTIME DESTINATION bin COMPONENT utils			# Install the dll file in bin directory
++    LIBRARY DESTINATION lib COMPONENT dev@Lib
++    )
 +
++INSTALL(TARGETS ${PROJECT_NAME}-static
++    ARCHIVE DESTINATION lib COMPONENT staticLib)	
+ 
  INSTALL(FILES ${hdrs}
  	DESTINATION include/${PROJECT_NAME}
- 	COMPONENT main)
+-	COMPONENT main)
++    COMPONENT devLib)
+ 
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,9 +37,6 @@ else()
+     SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_INSTALL_PREFIX}/lib/cmake/ /usr/lib/cmake)
+ endif()
+ 
+-
+-OPTION(BUILD_SHARED_LIBS 	"Set to OFF to build static libraries" ON)
+-
+ # ----------------------------------------------------------------------------
+ #   Find Dependencies
+ # ----------------------------------------------------------------------------
+@@ -264,20 +261,17 @@ MESSAGE( STATUS "-----------------------
+ message( STATUS "General configuration for ${PROJECT_NAME} ${PROJECT_VERSION}")
+ MESSAGE( STATUS "-------------------------------------------------------------------------------" )
+ message( STATUS )
+-message("    Built as dynamic libs?:" ${BUILD_SHARED_LIBS})
++message("    Built as dynamic libs?: BOTH - package patch" )
+ message("    Compiler:"                   "${CMAKE_COMPILER}"   "${CMAKE_CXX_COMPILER}")
+ message( STATUS "C++ flags (Release):       ${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE}")
+ message( STATUS "C++ flags (Debug):         ${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG}")
+ message( STATUS "CMAKE_CXX_FLAGS:         ${CMAKE_CXX_FLAGS}")
+ message( STATUS "CMAKE_BINARY_DIR:         ${CMAKE_BINARY_DIR}")
+-
+ MESSAGE( STATUS )
+ MESSAGE( STATUS "CMAKE_SYSTEM_PROCESSOR = ${CMAKE_SYSTEM_PROCESSOR}" )
+-MESSAGE( STATUS "BUILD_SHARED_LIBS = ${BUILD_SHARED_LIBS}" )
+-MESSAGE( STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}" )
++MESSAGE( STATUS "BUILD_SHARED_LIBS = BOTH - package patch" )
+ MESSAGE( STATUS "CMAKE_BUILD_TYPE = ${CMAKE_BUILD_TYPE}" )
+ MESSAGE( STATUS "CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}" )
+-
+ MESSAGE( STATUS )
+ MESSAGE( STATUS "---------------------------     Documentation     -----------------------------" )
+ MESSAGE( STATUS )
