@@ -13,7 +13,7 @@
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DINSTALL_DIR=ON
+	dh_auto_configure -- -DINSTALL_DOC=ON
 
 override_dh_auto_build-indep:
 	dh_auto_build -- doc 
