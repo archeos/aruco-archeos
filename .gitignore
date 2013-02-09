@@ -2,7 +2,7 @@
 .pc/
 
 # vim
-*.*~
+*~
 
 # debug Build
 built/

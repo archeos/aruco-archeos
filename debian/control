@@ -44,10 +44,10 @@ Description: Augmented reality library
 Package: libaruco-doc
 Section: doc
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}
+Recommends: libaruco-dev
 Description: Augmented reality library
  Aruco is a "minimal library for Augmented Reality applications based on 
  OpenCv". It supports AR markers, AR boards (multiple marker boards) and 
  integrates very well with Ogre 3D engine and OpenGL. This is the doc 
  package for Aruco.
-

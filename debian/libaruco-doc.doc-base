@@ -1,6 +1,7 @@
-Document: Aruco
+Document: aruco
 Title: Aruco reference Manual
-Section: Programming/C++
+Section: Programming
+
 Format: HTML
 Index: /usr/share/doc/libaruco-doc/html/index.html
 Files: /usr/share/doc/libaruco-doc/html/*.html
